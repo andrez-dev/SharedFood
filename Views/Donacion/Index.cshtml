@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Donacion/Donacion.css" rel="stylesheet" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM8frBHkLDuUuiH_qhBoZegRbu0hbxMA4&callback=initMap&libraries=places&v=weekly"
+        defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="~/Scripts/Donacion/Donacion.js"></script>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <!--Page Title Header Starts-->
+        <div class="row page-title-header">
+            <div class="col-12">
+                <div class="page-header">
+                    <div class="page-header-toolbar">
+                        <div class="btn-group toolbar-item" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary"><i class="mdi mdi-chevron-left"></i></button>
+                            <button type="button" class="btn btn-secondary">Donar</button>
+                            <button type="button" class="btn btn-secondary"><i class="mdi mdi-chevron-right"></i></button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Title Header Ends-->
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="~/Donacion/Index" method="post" enctype="multipart/form-data">
+                            <input id="input-b3" name="postedFile" type="file" class="file" width:100%
+                                   data-show-upload="false" data-show-caption="true" data-msg-placeholder="Seleccione..">
+                            <br />
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Nombre del Alimento</label>
+                                <input type="text" name="nombreAlimento" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Fecha de Vencimiento</label>
+                                <input type="text" name="fechaVencimiento" class="form-control" id="fechaVencimiento">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Ubicación</label>
+                                <input type="text" class="form-control" name="Ubicacion" id="Ubicacion" data-toggle="modal" data-target="#ModalMap" data-whatever="">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Latitud y Longitud</label>
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" name="Latitud" id="latitud" class="form-control" placeholder="Latitud">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="Longitud" id="longitud" class="form-control" placeholder="Longitud">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Fecha de recolección</label>
+                                <input type="text" name="fechaRecoleccion" class="form-control" id="fechaRecoleccion">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Cantidad</label>
+                                <input type="number" class="form-control" name="Cantidad" placeholder="Cantidad del Producto">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Comentario</label>
+                                <textarea type="text" name="Descripcion" class="form-control" rows="3" placeholder="p.ej. Calidad, Comunicación entre las partes."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container-fluid clearfix">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © @DateTime.Now.Year <a href="http://www.bootstrapdash.com/" target="_blank">SharedFood</a>. Todos los Derechos Reservados.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+                jorge quintana - Oweimar Mena
+            </span>
+        </div>
+    </footer>
+</div>
+
+<div class="modal fade" id="ModalMap" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"> Ubicación:</label>
+
+                        <div class="col-sm-10">
+                            @*<button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>*@
+                            <input name="address" id="pac-input" class="form-control" placeholder="Dirección" />
+                            <div id="map"></div>
+
+                            <br />
+                            <input type="button" id="selccionarDireccion" class="btn btn-primary" value="Seleccionar" />
+                        </div>
+                    </div>
+                    <div id="ModalMapPreview" style="width:100%; height:100%;"></div>
+                    <div class="clearfix"> &nbsp;</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#selccionarDireccion').click(function () {
+        $('#Ubicacion').val('');
+        $('#Ubicacion').val($('#pac-input').val())
+        $('#ModalMap').modal('toggle');
+    })
+</script>
+
+

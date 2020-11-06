@@ -1,0 +1,128 @@
+﻿@model SharedFood.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Registrarse";
+    Layout = "~/Views/Shared/_LayoutLoginRegister.cshtml";
+}
+<link href="~/Content/Donacion/Donacion.css" rel="stylesheet" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM8frBHkLDuUuiH_qhBoZegRbu0hbxMA4&callback=initMap&libraries=places&v=weekly"
+        defer></script>
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+<script src="~/Scripts/Donacion/Donacion.js"></script>
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+    <div class="card card0 border-0">
+        <div class="row d-flex">
+            <div class="col-lg-6">
+                <div class="card1 pb-5">
+                    <a href="~/Account/Login" title="Regresar"><i class="fa fa-arrow-left" aria-hidden="true" id="Regresar"></i></a>
+                    <div class="row"> <img src="~/img/logo.png" class="logo"> </div>
+                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="~/img/logoCanasta.png" class="image"> </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card2 card border-0 px-4 py-5">
+                    <form action="~/Account/Register" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="row mb-4 px-3">
+                            <h6 class="mb-0 mr-4 mt-2">Regístro</h6>
+                        </div>
+                        <div class="row px-3 mb-4">
+                            <div class="line"></div> <small class="or text-center">Or</small>
+                            <div class="line"></div>
+                        </div>
+
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                             <h6 class="mb-0 text-sm">Correo Eléctronico</h6>
+                             <input class="mb-4" type="text" name="Email" placeholder="Correo Eléctronico">
+                        </div>
+                        <div class="form-group">
+                             <h6 class="mb-0 text-sm">Contraseña</h6>
+                             <input type="password" name="Password" placeholder="Contraseña">
+                        </div>
+                        <div class="form-group">
+                                <h6 class="mb-0 text-sm">Confirmar Contraseña</h6>
+                            <input type="password" name="ConfirmPassword" placeholder="Contraseña">
+                        </div>
+                        <div class="form-group">
+                            <h6 class="mb-0 text-sm">Nombres</h6>
+                            <input type="text" class="form-control" name="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <h6 class="mb-0 text-sm">Apellidos</h6>
+                            <input type="text" class="form-control" name="Apellido">
+                        </div>
+                        <div class="form-group">
+                            <h6 class="mb-0 text-sm">Teléfono</h6>
+                            <input type="number" class="form-control" name="PhoneNumber">
+                        </div>
+                        <div class="form-group">
+                            <h6 class="mb-0 text-sm">Ubicación</h6>
+                            <input type="text" class="form-control" name="Ubicacion" id="Ubicacion" data-toggle="modal" data-target="#ModalMap" data-whatever="">
+                        </div>
+                        <div class="form-group">
+                            <h6 class="mb-0 text-sm">Latitud y Longitud</h6>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" name="Latitud" id="latitud" class="form-control" placeholder="Latitud">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Longitud" id="longitud" class="form-control" placeholder="Longitud">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row px-3 mb-4">
+                            <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input"> <label for="chk1" class="custom-control-label text-sm">Recuérdame</label> </div>
+                        </div>
+                        <div class="row mb-3 px-3"> <button type="submit" class="btn btn-blue text-center">Regístrate</button> </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="bg-blue py-4">
+            <div class="row px-3">
+                <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2020. Todos los derechos reservados.</small>
+                <div class="social-contact ml-4 ml-sm-auto"> <span class="fa fa-facebook mr-4 text-sm"></span> <span class="fa fa-google-plus mr-4 text-sm"></span> <span class="fa fa-linkedin mr-4 text-sm"></span> <span class="fa fa-twitter mr-4 mr-sm-5 text-sm"></span> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="ModalMap" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"> Ubicación:</label>
+
+                        <div class="col-sm-10">
+                            @*<button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>*@
+                            <input name="address" id="pac-input" class="form-control" placeholder="Dirección" />
+                            <div id="map"></div>
+
+                            <br />
+                            <input type="button" id="selccionarDireccion" class="btn btn-primary" value="Seleccionar" />
+                        </div>
+                    </div>
+                    <div id="ModalMapPreview" style="width:100%; height:100%;"></div>
+                    <div class="clearfix"> &nbsp;</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#selccionarDireccion').click(function () {
+        $('#Ubicacion').val('');
+        $('#Ubicacion').val($('#pac-input').val())
+        $('#ModalMap').modal('toggle');
+    })
+</script>

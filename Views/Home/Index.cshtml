@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+    // Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <!-- Page Title Header Starts-->
+            <div class="row page-title-header">
+                <div class="col-12">
+                    <div class="page-header">
+                        <div class="page-header-toolbar">
+                            <div class="btn-group toolbar-item" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary"><i class="mdi mdi-chevron-left"></i></button>
+                                <a class="btn btn-secondary" href="~/Home/Index">Inicio</a>
+                                <button type="button" class="btn btn-secondary"><i class="mdi mdi-chevron-right"></i></button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page Title Header Ends-->
+            <div class="row">
+                <div class="col-md-12 grid-margin">
+                    <div class="card">
+                        <div class="card-body">
+                            <table id="example" class="table table-striped table-bordered" >
+                                @if (ViewBag.MiLista != null)
+                                {
+                                    <thead>
+                                        <tr>
+                                            <th>Alimento</th>
+                                            <th>Donante</th>
+                                            <th>Ubicacion</th>
+                                            <th>Descripción</th>
+                                            <th>Vencimiento</th>
+                                            <th>Fecha Recolección</th>
+                                            <th>Cantidad</th>
+                                            <th>Estado</th>
+                                            <th>Imagen</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in ViewBag.MiLista)
+                                        {
+                                        <tr>
+                                            <td>@item.nombreAlimento</td>
+                                            <td>@item._Donante</td>
+                                            <td>@item.Ubicacion</td>
+                                            <td>@item.Descripcion</td>
+                                            <td>@item.fechaVencimiento</td>
+                                            <td>@item.fechaRecoleccion</td>
+                                            <td>@item.Cantidad</td>
+                                            @if (@item.IdEstado == Convert.ToInt32(SharedFood.Common.Enums.Estado.Disponible))
+                                            {
+                                                <td><div class="badge badge-success">@item._NombreEstado</div></td>
+                                            }
+                                            @if (@item.IdEstado == Convert.ToInt32(SharedFood.Common.Enums.Estado.Adquirido))
+                                            {
+                                                <td><div class="badge badge-danger">@item._NombreEstado</div></td>
+                                            }
+                                            @if (@item.IdEstado == Convert.ToInt32(SharedFood.Common.Enums.Estado.Vencido))
+                                            {
+                                                <td><div class="badge badge-warning">@item._NombreEstado</div></td>
+                                            }
+
+                                            <td>
+                                                @if (item.Image != null)
+                                                {
+                                                    var imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(item.Image)}";
+                                                    <img src="@imgSrc" alt="@item.nombreAlimento" />
+                                                }
+
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                }
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <footer class="footer">
+            <div class="container-fluid clearfix">
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © @DateTime.Now.Year <a href="http://www.bootstrapdash.com/" target="_blank">SharedFood</a>. Todos los Derechos Reservados.</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+                    jorge quintana - Oweimar Mena
+                </span>
+            </div>
+        </footer>
+    </div>
+

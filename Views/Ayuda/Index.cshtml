@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="~/Scripts/Donacion/Donacion.js"></script>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <!--Page Title Header Starts-->
+        <div class="row page-title-header">
+            <div class="col-12">
+                <div class="page-header">
+                    <div class="page-header-toolbar">
+                        <div class="btn-group toolbar-item" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary"><i class="mdi mdi-chevron-left"></i></button>
+                            <a class="btn btn-secondary"  href="~/Home/Index">Regresar</a>
+                            <button type="button" class="btn btn-secondary"><i class="mdi mdi-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Title Header Ends-->
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        @if (ViewBag.MiLista != null)
+                        {
+                            <div class="row">
+                                @foreach (var item in ViewBag.MiLista)
+                                {
+                                    if (item.Image != null)
+                                    {
+                                        var imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(item.Image)}";
+
+                                        <div class="col-auto">
+                                            <div class="card" style="width: 18rem;">
+                                                <img src="@imgSrc"   class="card-img-top"  alt="@item.nombreAlimento">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">@item.nombreAlimento</h5>
+                                                    <p class="card-text">@item.Descripcion</p>
+                                                </div>
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item"><strong>Ubicación:</strong> @item.Ubicacion</li>
+                                                    <li class="list-group-item"><strong>Recolección</strong> @item.fechaRecoleccion</li>
+                                                    <li class="list-group-item"><strong>Vencimiento</strong> @item.fechaVencimiento</li>
+                                                </ul>
+                                                <a href="~/Ayuda/Detalle/@item.IdDonacion" class="btn btn-primary">Detalle</a>
+                                            </div>
+                                        </div>
+
+                                    }
+
+                                }
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid clearfix">
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © @DateTime.Now.Year <a href="http://www.bootstrapdash.com/" target="_blank">SharedFood</a>. Todos los Derechos Reservados.</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+                    jorge quintana - Oweimar Mena
+                </span>
+            </div>
+        </footer>
+    </div>
+
+    <div class="modal fade" id="ModalMap" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"> Ubicación:</label>
+
+                            <div class="col-sm-10">
+                                @*<button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>*@
+                                <input name="address" id="pac-input" class="form-control" placeholder="Dirección" />
+                                <div id="map"></div>
+
+                                <br />
+                                <input type="button" id="selccionarDireccion" class="btn btn-primary" value="Seleccionar" />
+                            </div>
+                        </div>
+                        <div id="ModalMapPreview" style="width:100%; height:100%;"></div>
+                        <div class="clearfix"> &nbsp;</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+

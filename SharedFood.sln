@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedFood", "SharedFood.csproj", "{5DF2167F-8E9B-4436-8B41-25C46AD19B4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedFood.DataAccess", "..\SharedFood.DataAccess\SharedFood.DataAccess.csproj", "{127746D0-304D-42AB-AC29-E1970FBBA623}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedFood.Business", "..\SharedFood.Business\SharedFood.Business.csproj", "{D0DF882F-40C0-4555-9117-23E5EE827089}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedFood.Entities", "..\SharedFood.Entities\SharedFood.Entities.csproj", "{905540A2-E4EB-4452-9A5C-F10B22F91DF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedFood.Utilities", "..\SharedFood.Utilities\SharedFood.Utilities.csproj", "{1FC2F49C-0E25-415F-B649-0727C3820D1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedFood.Facade", "..\SharedFood.Facade\SharedFood.Facade.csproj", "{C453D1EB-AE3A-401E-BB88-B9E1525D7803}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DF2167F-8E9B-4436-8B41-25C46AD19B4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DF2167F-8E9B-4436-8B41-25C46AD19B4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DF2167F-8E9B-4436-8B41-25C46AD19B4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DF2167F-8E9B-4436-8B41-25C46AD19B4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{127746D0-304D-42AB-AC29-E1970FBBA623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{127746D0-304D-42AB-AC29-E1970FBBA623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{127746D0-304D-42AB-AC29-E1970FBBA623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{127746D0-304D-42AB-AC29-E1970FBBA623}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0DF882F-40C0-4555-9117-23E5EE827089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0DF882F-40C0-4555-9117-23E5EE827089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0DF882F-40C0-4555-9117-23E5EE827089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0DF882F-40C0-4555-9117-23E5EE827089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{905540A2-E4EB-4452-9A5C-F10B22F91DF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{905540A2-E4EB-4452-9A5C-F10B22F91DF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{905540A2-E4EB-4452-9A5C-F10B22F91DF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{905540A2-E4EB-4452-9A5C-F10B22F91DF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC2F49C-0E25-415F-B649-0727C3820D1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC2F49C-0E25-415F-B649-0727C3820D1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC2F49C-0E25-415F-B649-0727C3820D1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC2F49C-0E25-415F-B649-0727C3820D1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C453D1EB-AE3A-401E-BB88-B9E1525D7803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C453D1EB-AE3A-401E-BB88-B9E1525D7803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C453D1EB-AE3A-401E-BB88-B9E1525D7803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C453D1EB-AE3A-401E-BB88-B9E1525D7803}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2BF0C429-F8D0-4A9A-8C82-3D52F9BD7BD7}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://eljor.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SharedFood.csproj
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = ..\\SharedFood.DataAccess\\SharedFood.DataAccess.csproj
+		SccProjectName2 = ../SharedFood.DataAccess
+		SccLocalPath2 = ..\\SharedFood.DataAccess
+		SccProjectUniqueName3 = ..\\SharedFood.Business\\SharedFood.Business.csproj
+		SccProjectName3 = ../SharedFood.Business
+		SccLocalPath3 = ..\\SharedFood.Business
+		SccProjectUniqueName4 = ..\\SharedFood.Entities\\SharedFood.Entities.csproj
+		SccProjectName4 = ../SharedFood.Entities
+		SccLocalPath4 = ..\\SharedFood.Entities
+		SccProjectUniqueName5 = ..\\SharedFood.Utilities\\SharedFood.Utilities.csproj
+		SccProjectName5 = ../SharedFood.Utilities
+		SccLocalPath5 = ..\\SharedFood.Utilities
+		SccProjectUniqueName6 = ..\\SharedFood.Facade\\SharedFood.Facade.csproj
+		SccProjectName6 = ../SharedFood.Facade
+		SccLocalPath6 = ..\\SharedFood.Facade
+	EndGlobalSection
+EndGlobal
